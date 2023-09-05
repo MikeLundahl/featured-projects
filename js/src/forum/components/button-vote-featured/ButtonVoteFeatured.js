@@ -1,4 +1,5 @@
 import Component from 'flarum/common/Component';
+import Button from 'flarum/common/components/Button'
 
 export default class ButtonVoteFeatured extends Component {
   oninit(vnode) {
@@ -28,9 +29,9 @@ export default class ButtonVoteFeatured extends Component {
     return (
       <div className="ButtonVoteFeatured">
         {this.votes}
-        <button className="ButtonVoteFeatured-button" onclick={() => this.handleClick()}>
-          Vote to be featured
-        </button>
+        <Button className="ButtonVoteFeatured-button Button" onclick={() => this.handleClick()}>
+          Vote featured
+        </Button>
       </div>
     );
   }

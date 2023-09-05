@@ -11,6 +11,7 @@
 
 namespace Mbl\FeaturedProjects;
 
+use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Extend;
 
 return [
@@ -21,4 +22,9 @@ return [
         ->js(__DIR__.'/js/dist/admin.js')
         ->css(__DIR__.'/less/admin.less'),
     new Extend\Locales(__DIR__.'/locale'),
+
+    (new Extend\ApiSerializer(ForumSerializer::class))
+        ->attribute('canVoteFeaturedProjects', function (ForumSerializer $serializer): bool {
+            return $serializer->getActor()->can('discussion.vote_featured_projects');
+        })
 ];
