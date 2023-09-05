@@ -7,7 +7,7 @@ app.initializers.add('mbl/featured-projects', () => {
     .registerPermission(
     {
       icon: 'fas fa-rocket', // Font-Awesome Icon
-      label: app.translator.trans('Vote featured projects'), // Permission Label
+      label: 'Vote featured projects', // Permission Label
       permission: 'discussion.vote_featured_projects', // Actual permission name stored in database (and used when checking permission).
       tagScoped: true, // Whether it be possible to apply this permission on tags, not just globally. Explained in the next paragraph.
     },
