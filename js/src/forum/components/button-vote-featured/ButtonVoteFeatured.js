@@ -1,3 +1,5 @@
+import app from 'flarum/forum/app';
+import DiscussionPage from 'flarum/forum/components/DiscussionPage';
 import Component from 'flarum/common/Component';
 import Button from 'flarum/common/components/Button'
 
@@ -21,8 +23,19 @@ export default class ButtonVoteFeatured extends Component {
     this.votes ++
 
     //TODO: register votes on db
-    //user voted
-    //discussion id
+    if (app.current.matches(DiscussionPage)) {
+      // Get the current discussion
+      const discussion = app.current.get('discussion');
+      const id = discussion.id();
+      console.log(id)
+
+      const userId = app.session.user.id()
+      console.log(userId)
+
+
+    }
+
+
   }
 
   view() {
