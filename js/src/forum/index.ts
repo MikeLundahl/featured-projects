@@ -6,6 +6,8 @@ import FeaturedProjectsVote  from "./models/FeaturedProjectsVote";
 import CardsContainer from './components/cards-container/CardsContainer'
 import ButtonVoteFeatured from "./components/button-vote-featured/ButtonVoteFeatured";
 
+export { default as extend } from './extend';
+
 app.initializers.add('mbl/featured-projects', () => {
   app.store.models['featured-projects-vote'] = FeaturedProjectsVote;
 

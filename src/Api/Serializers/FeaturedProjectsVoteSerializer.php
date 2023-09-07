@@ -21,10 +21,10 @@ class FeaturedProjectsVoteSerializer extends AbstractSerializer
     protected function getDefaultAttributes($model): array
     {
         return [
-            'user_id' => $model->user_id,
-            'discussion_id' => $model->discussion_id,
-            'created_at' => $model->created_at,
-            'updated_at' => $model->updated_at
+            'userId' => $model->user_id,
+            'discussionId' => $model->discussion_id,
+            'createdAt' => $model->created_at,
+            'updatedAt' => $model->updated_at
         ];
     }
 }

@@ -15,6 +15,7 @@ use Carbon\Carbon;
 
 class FeaturedProjectsVoteModel extends AbstractModel
 {
+
     protected $table = 'mbl_featured_projects_votes';
 
     protected $fillable = [

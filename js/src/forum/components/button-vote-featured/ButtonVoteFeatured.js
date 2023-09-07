@@ -11,26 +11,34 @@ export default class ButtonVoteFeatured extends Component {
     this.votes = 0
   }
 
-  oncreate(vnode) {
+  async oncreate(vnode) {
     super.oncreate(vnode);
+    const votes = await this.getVotes()
+
+      console.log(votes)
+      console.log(votes.length)
+    this.votes = votes.length
+
   }
 
   onupdate(vnode) {
     super.onupdate(vnode);
+    m.redraw()
   }
   view() {
     return (
       <div className="ButtonVoteFeatured">
         {this.votes}
-        <Button className="ButtonVoteFeatured-button Button" onclick={() => this.handleClick()}>
+        <Button className="ButtonVoteFeatured-button Button" onclick={(e) => this.handleClick(e)}>
           Vote featured
         </Button>
       </div>
     );
   }
 
-  handleClick() {
-    this.votes ++
+  async handleClick(e) {
+    const button = e.target
+    button.disabled = true
 
         //TODO: register votes on db
         if (app.current.matches(DiscussionPage)) {
@@ -52,5 +60,14 @@ export default class ButtonVoteFeatured extends Component {
                 console.error(e)
             })
         }
-    }
+        const votes = await this.getVotes()
+        this.votes = votes.length
+        button.disabled = false
+  }
+
+  getVotes() {
+    return app.store.find('featured-projects-vote').then((res) => {
+      return res.payload.data
+    })
+  }
 }
