@@ -18,26 +18,6 @@ export default class ButtonVoteFeatured extends Component {
   onupdate(vnode) {
     super.onupdate(vnode);
   }
-
-  handleClick() {
-    this.votes ++
-
-    //TODO: register votes on db
-    if (app.current.matches(DiscussionPage)) {
-      // Get the current discussion
-      const discussion = app.current.get('discussion');
-      const id = discussion.id();
-      console.log(id)
-
-      const userId = app.session.user.id()
-      console.log(userId)
-
-
-    }
-
-
-  }
-
   view() {
     return (
       <div className="ButtonVoteFeatured">
@@ -48,4 +28,29 @@ export default class ButtonVoteFeatured extends Component {
       </div>
     );
   }
+
+  handleClick() {
+    this.votes ++
+
+        //TODO: register votes on db
+        if (app.current.matches(DiscussionPage)) {
+            // Get the current discussion
+            const discussion = app.current.get('discussion');
+            const discussionId = discussion.id();
+
+            const userId = app.session.user.id()
+            console.log(userId)
+
+            const vote = app.store.createRecord('featured-projects-vote')
+            vote.save({
+                discussionId: discussionId,
+                userId: userId
+            }).then((res) => {
+                console.log('Vote saved')
+                console.log(res)
+            }).catch((e) => {
+                console.error(e)
+            })
+        }
+    }
 }

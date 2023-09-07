@@ -11,8 +11,11 @@
 
 namespace Mbl\FeaturedProjects;
 
+
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Extend;
+use Mbl\FeaturedProjects\Api\Controller\ListFeaturedProjectsVoteController;
+use Mbl\FeaturedProjects\Api\Controller\CreateFeaturedProjectsVoteController;
 
 return [
     (new Extend\Frontend('forum'))
@@ -26,5 +29,10 @@ return [
     (new Extend\ApiSerializer(ForumSerializer::class))
         ->attribute('canVoteFeaturedProjects', function (ForumSerializer $serializer): bool {
             return $serializer->getActor()->can('discussion.vote_featured_projects');
-        })
+        }),
+
+    (new Extend\Routes('api'))
+        ->post('/featured-projects-vote', 'mbl-featured-projects.create', CreateFeaturedProjectsVoteController::class)
+        ->get('/featured-projects-vote', 'mbl-featured-projects.index', ListFeaturedProjectsVoteController::class),
+
 ];
