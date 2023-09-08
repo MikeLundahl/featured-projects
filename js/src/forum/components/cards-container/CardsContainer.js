@@ -13,6 +13,7 @@ export default class CardsContainer extends Component {
 
   oncreate(vnode) {
     super.oncreate(vnode);
+
     const MaxCards = 3
 
     app.store

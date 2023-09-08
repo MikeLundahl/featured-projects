@@ -9,12 +9,11 @@ import ButtonVoteFeatured from "./components/button-vote-featured/ButtonVoteFeat
 export { default as extend } from './extend';
 
 app.initializers.add('mbl/featured-projects', () => {
-  app.store.models['featured-projects-vote'] = FeaturedProjectsVote;
+  app.store.models.featuredProjectsVote = FeaturedProjectsVote;
 
   extend(DiscussionPage.prototype, 'sidebarItems', function (items) {
     const canVote = app.forum.attribute("canVoteFeaturedProjects")
     if(canVote) {
-      //FIXME: What is the first argument of the add method?
       items.add('mblButtonVoteFeatured', m(ButtonVoteFeatured));
     }
   })
@@ -22,4 +21,5 @@ app.initializers.add('mbl/featured-projects', () => {
   override(IndexPage.prototype, 'hero', function(original) {
     return [original(), m(CardsContainer)]
   })
+
 });

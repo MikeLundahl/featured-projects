@@ -6,68 +6,71 @@ import Button from 'flarum/common/components/Button'
 export default class ButtonVoteFeatured extends Component {
   oninit(vnode) {
     super.oninit(vnode);
-
-    //TODO: get votes from DB
-    this.votes = 0
+    this.discussionId = this.getDiscussionId()
   }
 
   async oncreate(vnode) {
     super.oncreate(vnode);
-    const votes = await this.getVotes()
-
-      console.log(votes)
-      console.log(votes.length)
-    this.votes = votes.length
-
+      const votesData = await this.getVotesByDiscussionId(this.discussionId)
+      this.state.votes = votesData.length
+      console.log(this.state.votes)
+      m.redraw()
   }
 
   onupdate(vnode) {
     super.onupdate(vnode);
-    m.redraw()
   }
+
+  state = {
+        votes: 0,
+        loading: false
+    }
   view() {
     return (
       <div className="ButtonVoteFeatured">
-        {this.votes}
-        <Button className="ButtonVoteFeatured-button Button" onclick={(e) => this.handleClick(e)}>
+        {this.state.votes}
+        <Button className="ButtonVoteFeatured-button Button" type="submit" loading={this.state.loading} onclick={e => this.onclick(e)}>
           Vote featured
         </Button>
       </div>
     );
   }
 
-  async handleClick(e) {
-    const button = e.target
-    button.disabled = true
+  onclick(e) {
+    e.preventDefault();
+    this.state.loading = true;
 
-        //TODO: register votes on db
-        if (app.current.matches(DiscussionPage)) {
-            // Get the current discussion
-            const discussion = app.current.get('discussion');
-            const discussionId = discussion.id();
+     if (app.current.matches(DiscussionPage)) {
 
             const userId = app.session.user.id()
             console.log(userId)
 
+            //TODO: Error handling! Add catch!
             const vote = app.store.createRecord('featured-projects-vote')
             vote.save({
-                discussionId: discussionId,
+                discussionId: this.discussionId,
                 userId: userId
-            }).then((res) => {
-                console.log('Vote saved')
-                console.log(res)
-            }).catch((e) => {
-                console.error(e)
+            }).then(async (res) => {
+                const votes = await this.getVotesByDiscussionId(this.discussionId)
+                this.state.votes = votes.length
+                this.state.loading = false
+                m.redraw()
+            }).catch((err) => {
+                console.log(err)
             })
-        }
-        const votes = await this.getVotes()
-        this.votes = votes.length
-        button.disabled = false
+
+     }
   }
 
-  getVotes() {
-    return app.store.find('featured-projects-vote').then((res) => {
-      return res.payload.data
-    })
+  getDiscussionId() {
+    const discussion = app.current.get('discussion');
+    const discussionId = discussion.id();
+
+    return discussionId
+  }
+  async getVotesByDiscussionId(discussionId) {
+    console.log("is" + discussionId)
+    const res = await app.store.find('featured-projects-vote', {discussionId: discussionId});
+    return res.payload.data;
   }
 }

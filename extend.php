@@ -14,6 +14,8 @@ namespace Mbl\FeaturedProjects;
 
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Extend;
+use Mbl\FeaturedProjects\Model\FeaturedProjectsVoteModel;
+use Mbl\FeaturedProjects\Query\VotesByDiscussionIdFilter;
 use Mbl\FeaturedProjects\Api\Controller\ListFeaturedProjectsVoteController;
 use Mbl\FeaturedProjects\Api\Controller\CreateFeaturedProjectsVoteController;
 
@@ -35,4 +37,8 @@ return [
         ->post('/featured-projects-vote', 'mbl-featured-projects.create', CreateFeaturedProjectsVoteController::class)
         ->get('/featured-projects-vote', 'mbl-featured-projects.index', ListFeaturedProjectsVoteController::class),
 
+    /*
+    (new Extend\Filter(FeaturedProjectsVoteModel::class))
+        ->addFilter(VotesByDiscussionIdFilter::class, 'mbl-featured-projects-votes')
+    */
 ];

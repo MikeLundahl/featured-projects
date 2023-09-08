@@ -10,21 +10,23 @@ use Flarum\Api\Serializer\AbstractSerializer;
 
 class FeaturedProjectsVoteSerializer extends AbstractSerializer
 {
-    protected $type = 'mbl_featured_projects_votes';
+    protected $type = 'featuredProjectsVote';
 
     /**
-     * @ FeaturedProjectsVote $model
-     * @param $model
+     * Get the default set of serialized attributes for a model.
+     *
+     * @param object|array $model
+     *
      * @return array
      */
 
-    protected function getDefaultAttributes($model): array
+    protected function getDefaultAttributes($featuredProjectsVote): array
     {
         return [
-            'userId' => $model->user_id,
-            'discussionId' => $model->discussion_id,
-            'createdAt' => $model->created_at,
-            'updatedAt' => $model->updated_at
+            'userId' => $featuredProjectsVote->user_id,
+            'discussionId' => $featuredProjectsVote->discussion_id,
+            'createdAt' => $featuredProjectsVote->created_at,
+            'updatedAt' => $featuredProjectsVote->updated_at
         ];
     }
 }
