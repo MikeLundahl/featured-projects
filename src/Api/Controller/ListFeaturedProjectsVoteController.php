@@ -39,6 +39,11 @@ class ListFeaturedProjectsVoteController extends AbstractListController
         $results = $this->filterer->filter($criteria);
         $results = $results->getResults();
 */
-        return FeaturedProjectsVoteModel::where('discussion_id', $id)->orderBy('created_at', 'desc')->get();
+        if($id) {
+            return FeaturedProjectsVoteModel::where('discussion_id', $id)->orderBy('created_at', 'desc')->get();
+        } else {
+            return FeaturedProjectsVoteModel::orderBy('created_at', 'desc')->get();
+        }
+
     }
 }

@@ -13,7 +13,13 @@ app.initializers.add('mbl/featured-projects', () => {
 
   extend(DiscussionPage.prototype, 'sidebarItems', function (items) {
     const canVote = app.forum.attribute("canVoteFeaturedProjects")
-    if(canVote) {
+    const tagsToFeature: string[] | null = app.forum.attribute('mbl-featured-projects.tags')
+
+    //FIXME: accessing discussions tag with "this.discussion.tags()" might not be best practice?
+    const isValidTag = tagsToFeature && tagsToFeature.includes(this.discussion.tags()[0].data.attributes.name)// this.discussion.tags()
+
+
+    if(canVote && isValidTag) {
       items.add('mblButtonVoteFeatured', m(ButtonVoteFeatured));
     }
   })

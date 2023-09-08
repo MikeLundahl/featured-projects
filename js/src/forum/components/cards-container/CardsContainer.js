@@ -11,12 +11,17 @@ export default class CardsContainer extends Component {
     this.loading = true
   }
 
-  oncreate(vnode) {
+  async oncreate(vnode) {
     super.oncreate(vnode);
 
     const MaxCards = 3
+    //TODO: Get all votes
+    //const votedDiscussions = app.store.find('featured-projects-vote')
+    const res = await app.store.find('featured-projects-vote')
 
-    app.store
+    console.log("All votes ", res.length)
+
+      app.store
       .find('discussions', {
         filter: {q: 'tag:Projects'},
         sort: '-commentCount',
