@@ -15,31 +15,33 @@ export default class CardsContainer extends Component {
   async oncreate(vnode) {
     super.oncreate(vnode);
 
+    const amountOfFeaturedItems = 3
     const res = await app.store.find('featured-projects-vote')
     const discussionsToFeature = sortVotes(res)
-    //TODO: add a minimum of discussions to feature
 
+    if(discussionsToFeature.length === amountOfFeaturedItems) {
       app.store
-      .find('discussions', {
-        filter: {id: discussionsToFeature},
-        include: 'firstPost,user,tags',
-      })
-      .then((results) => {
-        for(let i = 0; i < results.length; i++){
-          const image = getPostImage(results[i].firstPost())
-          this.cardPrev.push(
+        .find('discussions', {
+          filter: {id: discussionsToFeature},
+          include: 'firstPost,user,tags',
+        })
+        .then((results) => {
+          for (let i = 0; i < results.length; i++) {
+            const image = getPostImage(results[i].firstPost())
+            this.cardPrev.push(
               <Link className="FeaturedCardLink" href={app.route.discussion(results[i])}>
                 <FeaturedCard
                   title={results[i].title()}
                   image={image}
                 />
               </Link>
-          )
-        }
+            )
+          }
 
-        this.loading = false;
-        m.redraw();
-      });
+          this.loading = false;
+          m.redraw();
+        });
+    }
 
 
     this.loading = false
