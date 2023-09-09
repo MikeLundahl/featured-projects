@@ -3,6 +3,7 @@ import Link from 'flarum/common/components/Link';
 import Component from 'flarum/common/Component';
 import FeaturedCard from '../featued-card/FeaturedCard'
 import getPostImage from '../../helpers/getPostImage'
+import sortVotes from '../../../utils/sortVotes'
 
 export default class CardsContainer extends Component {
   oninit(vnode) {
@@ -13,19 +14,16 @@ export default class CardsContainer extends Component {
 
   async oncreate(vnode) {
     super.oncreate(vnode);
-
     const MaxCards = 3
-    //TODO: Get all votes
-    //const votedDiscussions = app.store.find('featured-projects-vote')
-    const res = await app.store.find('featured-projects-vote')
 
-    console.log("All votes ", res.length)
+    const res = await app.store.find('featured-projects-vote')
+    const discussionsToFeature = sortVotes(res)
 
       app.store
       .find('discussions', {
-        filter: {q: 'tag:Projects'},
-        sort: '-commentCount',
-        page: { limit: MaxCards },
+        filter: {id: discussionsToFeature},
+        //sort: '-commentCount',
+        //page: { limit: MaxCards },
         include: 'firstPost,user,tags',
       })
       .then((results) => {

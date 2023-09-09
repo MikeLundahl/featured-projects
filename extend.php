@@ -14,11 +14,13 @@ namespace Mbl\FeaturedProjects;
 
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Extend;
+use Flarum\Discussion\Filter\DiscussionFilterer;
 use Mbl\FeaturedProjects\Model\FeaturedProjectsVoteModel;
 use Mbl\FeaturedProjects\Query\VotesByDiscussionIdFilter;
 use Mbl\FeaturedProjects\FeaturedProjectsSettings;
 use Mbl\FeaturedProjects\Api\Controller\ListFeaturedProjectsVoteController;
 use Mbl\FeaturedProjects\Api\Controller\CreateFeaturedProjectsVoteController;
+use Mbl\FeaturedProjects\Query\FeaturedDiscussionsFilter;
 
 return [
     (new Extend\Frontend('forum'))
@@ -41,6 +43,9 @@ return [
     (new Extend\Routes('api'))
         ->post('/featured-projects-vote', 'mbl-featured-projects.create', CreateFeaturedProjectsVoteController::class)
         ->get('/featured-projects-vote', 'mbl-featured-projects.index', ListFeaturedProjectsVoteController::class),
+
+    (new Extend\Filter(DiscussionFilterer::class))
+        ->addFilter(FeaturedDiscussionsFilter::class),
 
     (new Extend\Settings())
         ->serializeToForum('mbl-featured-projects.tags', 'mbl-featured-projects.tags_allowed_for_voting', function($value) {
