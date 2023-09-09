@@ -14,20 +14,17 @@ export default class CardsContainer extends Component {
 
   async oncreate(vnode) {
     super.oncreate(vnode);
-    const MaxCards = 3
 
     const res = await app.store.find('featured-projects-vote')
     const discussionsToFeature = sortVotes(res)
+    //TODO: add a minimum of discussions to feature
 
       app.store
       .find('discussions', {
         filter: {id: discussionsToFeature},
-        //sort: '-commentCount',
-        //page: { limit: MaxCards },
         include: 'firstPost,user,tags',
       })
       .then((results) => {
-        //this.discPreview = results;
         for(let i = 0; i < results.length; i++){
           const image = getPostImage(results[i].firstPost())
           this.cardPrev.push(

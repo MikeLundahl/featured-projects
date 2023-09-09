@@ -2,13 +2,11 @@
 type discussionsType = {
     [key: string]: number
 }
-export default function (votes) {
+export default function (votes: any) {
     let discussions: discussionsType = {}
 
     for(let i = 0; i < votes.length; i++) {
         const discussionId = votes[i].data.attributes.discussionId
-
-        //console.log(votes[i])
 
         if(typeof discussions[discussionId] === 'number') {
             discussions[discussionId] += 1

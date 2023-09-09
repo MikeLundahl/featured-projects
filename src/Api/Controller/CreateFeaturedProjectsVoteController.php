@@ -16,24 +16,11 @@ class CreateFeaturedProjectsVoteController extends AbstractCreateController
 
     protected function data(Request $request, Document $document)
     {
-        /*
-        $requestBody = $request->getParsedBody();
-        $requestData = $requestBody['data']['attributes'];
-        */
-
         $attributes = Arr::get($request->getParsedBody(), 'data.attributes');
-
-        /*
-        $task = FeaturedProjectsVoteModel::create([
-            $requestData['userId'],
-            $requestData['discussionId']
-        ]);
-        */
 
         return FeaturedProjectsVoteModel::create([
             'user_id' => Arr::get($attributes, 'userId'),
             'discussion_id' => Arr::get($attributes, 'discussionId')
         ]);
     }
-
 }
