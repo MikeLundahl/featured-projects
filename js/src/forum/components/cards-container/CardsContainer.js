@@ -17,6 +17,13 @@ export default class CardsContainer extends Component {
 
     const amountOfFeaturedItems = 3
     const res = await app.store.find('featured-projects-vote')
+
+    if(res.length === 0) {
+      this.loading = false
+      m.redraw()
+      return
+    }
+
     const discussionsToFeature = sortVotes(res)
 
     if(discussionsToFeature.length === amountOfFeaturedItems) {
@@ -55,7 +62,7 @@ export default class CardsContainer extends Component {
   view() {
     return (
       <div className="FeaturedCardsContainer">
-        <h3 className="FeaturedTitle">Featured projects</h3>
+        { this.cardPrev.length > 0 && <h3 className="FeaturedTitle">Featured projects</h3> }
         <div className="CardsContainer">
           { this.cardPrev.map((card) => { return card }) }
         </div>
