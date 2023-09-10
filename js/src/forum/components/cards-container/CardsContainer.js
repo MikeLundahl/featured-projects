@@ -66,6 +66,13 @@ export default class CardsContainer extends Component {
         <div className="CardsContainer">
           { this.cardPrev.map((card) => { return card }) }
         </div>
+        { this.cardPrev.length > 0 &&
+          <div className="FeaturedCardsAboutLink">
+            <Link href="/p/featured-projects">
+              About featured projects
+            </Link>
+          </div>
+        }
       </div>
     );
   }
