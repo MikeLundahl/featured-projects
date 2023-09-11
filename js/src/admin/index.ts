@@ -14,9 +14,14 @@ app.initializers.add('mbl/featured-projects', () => {
     'reply', // Category permission will be added to on the grid
     95 // Optional: Priority
     )
-        .registerSetting({
+    .registerSetting({
         setting: 'mbl-featured-projects.tags_allowed_for_voting',
         label: 'Tags allowed for voting (separate by comma)',
         type: 'text',
-        })
+    })
+    .registerSetting({
+    setting: 'mbl-featured-projects.default_image',
+    label: 'Default image as fallback',
+    type: 'text',
+  })
 });

@@ -49,7 +49,7 @@ return [
 
     (new Extend\Settings())
         ->serializeToForum('mbl-featured-projects.tags', 'mbl-featured-projects.tags_allowed_for_voting', function($value) {
-            return explode(',', $value);
-        })
+            return explode(',', $value);})
+        ->serializeToForum('mbl-featured-projects.image', 'mbl-featured-projects.default_image')
 
 ];

@@ -16,7 +16,7 @@ app.initializers.add('mbl/featured-projects', () => {
     const tagsToFeature: string[] | null = app.forum.attribute('mbl-featured-projects.tags')
 
     //FIXME: accessing discussions tag with "this.discussion.tags()" might not be best practice?
-    const isValidTag = tagsToFeature && tagsToFeature.includes(this.discussion.tags()[0].data.attributes.name)// this.discussion.tags()
+    const isValidTag = tagsToFeature && tagsToFeature.includes(this.discussion.tags()[0].data.attributes.name)
 
 
     if(canVote && isValidTag) {
