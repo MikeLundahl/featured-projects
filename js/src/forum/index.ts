@@ -19,6 +19,7 @@ app.initializers.add('mbl/featured-projects', () => {
     const isValidTag = tagsToFeature && tagsToFeature.includes(this.discussion.tags()[0].data.attributes.name)
 
 
+
     if(canVote && isValidTag) {
       items.add('mblButtonVoteFeatured', m(ButtonVoteFeatured));
     }

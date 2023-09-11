@@ -26,9 +26,9 @@
             "title": "MBL Featured Projects",
             "category": "",
             "icon": {
-                "name": "",
-                "color": "",
-                "backgroundColor": ""
+                "name": "fas fa-bolt",
+                "color": "#ffffff",
+                "backgroundColor": "#000000"
             }
         },
         "flarum-cli": {

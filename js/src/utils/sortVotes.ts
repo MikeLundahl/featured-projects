@@ -18,8 +18,6 @@ export default function (votes: any) {
 
     let sortableDiscussions = []
     for( let discussion in discussions) {
-        console.log("my dis " , discussion)
-
         sortableDiscussions.push({discussionId: discussion, votes: discussions[discussion]})
     }
 

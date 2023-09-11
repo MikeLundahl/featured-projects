@@ -13,7 +13,6 @@ export default class ButtonVoteFeatured extends Component {
     super.oncreate(vnode);
       const votesData = await this.getVotesByDiscussionId(this.discussionId)
       this.state.votes = votesData.length
-      console.log(this.state.votes)
       m.redraw()
   }
 
@@ -43,7 +42,6 @@ export default class ButtonVoteFeatured extends Component {
      if (app.current.matches(DiscussionPage)) {
 
             const userId = app.session.user.id()
-            console.log(userId)
 
             //TODO: Error handling! Add catch!
             const vote = app.store.createRecord('featured-projects-vote')
@@ -69,7 +67,6 @@ export default class ButtonVoteFeatured extends Component {
     return discussionId
   }
   async getVotesByDiscussionId(discussionId) {
-    console.log("is" + discussionId)
     const res = await app.store.find('featured-projects-vote', {discussionId: discussionId});
     return res.payload.data;
   }
