@@ -11,14 +11,18 @@ export { default as extend } from './extend';
 app.initializers.add('mbl/featured-projects', () => {
   app.store.models.featuredProjectsVote = FeaturedProjectsVote;
 
-  extend(DiscussionPage.prototype, 'sidebarItems', function (items) {
+  extend(DiscussionPage.prototype, 'sidebarItems', async function (items) {
     const canVote = app.forum.attribute("canVoteFeaturedProjects")
     const tagsToFeature: string[] | null = app.forum.attribute('mbl-featured-projects.tags')
+    const tagsOfCurrentDiscussion = app.current.data.discussion.tags()
+    const tagNamesOfCurrentDiscussion: string[] = tagsOfCurrentDiscussion.map((tag: any) => tag.data.attributes.name)
+    let matchingTags: string[] = []
 
-    //FIXME: accessing discussions tag with "this.discussion.tags()" might not be best practice?
-    const isValidTag = tagsToFeature && tagsToFeature.includes(this.discussion.tags()[0].data.attributes.name)
+    if (tagsToFeature !== null) {
+      matchingTags = tagNamesOfCurrentDiscussion.filter((tagName: string) => tagsToFeature.includes(tagName))
+    }
 
-
+    const isValidTag = tagsToFeature && matchingTags.length > 0
 
     if(canVote && isValidTag) {
       items.add('mblButtonVoteFeatured', m(ButtonVoteFeatured));

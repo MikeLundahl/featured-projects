@@ -43,7 +43,6 @@ export default class ButtonVoteFeatured extends Component {
 
             const userId = app.session.user.id()
 
-            //TODO: Error handling! Add catch!
             const vote = app.store.createRecord('featured-projects-vote')
             vote.save({
                 discussionId: this.discussionId,
