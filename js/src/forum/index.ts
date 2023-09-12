@@ -14,6 +14,8 @@ app.initializers.add('mbl/featured-projects', () => {
   extend(DiscussionPage.prototype, 'sidebarItems', async function (items) {
     const canVote = app.forum.attribute("canVoteFeaturedProjects")
     const tagsToFeature: string[] | null = app.forum.attribute('mbl-featured-projects.tags')
+
+    // @ts-ignore
     const tagsOfCurrentDiscussion = app.current.data.discussion.tags()
     const tagNamesOfCurrentDiscussion: string[] = tagsOfCurrentDiscussion.map((tag: any) => tag.data.attributes.name)
     let matchingTags: string[] = []
