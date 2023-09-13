@@ -200,7 +200,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var flarum_common_components_Link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(flarum_common_components_Link__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var flarum_common_Component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! flarum/common/Component */ "flarum/common/Component");
 /* harmony import */ var flarum_common_Component__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(flarum_common_Component__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _featued_card_FeaturedCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../featued-card/FeaturedCard */ "./src/forum/components/featued-card/FeaturedCard.js");
+/* harmony import */ var _featured_card_FeaturedCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../featured-card/FeaturedCard */ "./src/forum/components/featured-card/FeaturedCard.js");
 /* harmony import */ var _helpers_getPostImage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../helpers/getPostImage */ "./src/forum/helpers/getPostImage.js");
 /* harmony import */ var _utils_sortVotes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../utils/sortVotes */ "./src/utils/sortVotes.ts");
 
@@ -257,7 +257,7 @@ var CardsContainer = /*#__PURE__*/function (_Component) {
                   _this.cardPrev.push(m((flarum_common_components_Link__WEBPACK_IMPORTED_MODULE_4___default()), {
                     className: "FeaturedCardLink",
                     href: flarum_forum_app__WEBPACK_IMPORTED_MODULE_3___default().route.discussion(results[i])
-                  }, m(_featued_card_FeaturedCard__WEBPACK_IMPORTED_MODULE_6__["default"], {
+                  }, m(_featured_card_FeaturedCard__WEBPACK_IMPORTED_MODULE_6__["default"], {
                     title: results[i].title(),
                     image: image
                   })));
@@ -303,10 +303,10 @@ var CardsContainer = /*#__PURE__*/function (_Component) {
 
 /***/ }),
 
-/***/ "./src/forum/components/featued-card/FeaturedCard.js":
-/*!***********************************************************!*\
-  !*** ./src/forum/components/featued-card/FeaturedCard.js ***!
-  \***********************************************************/
+/***/ "./src/forum/components/featured-card/FeaturedCard.js":
+/*!************************************************************!*\
+  !*** ./src/forum/components/featured-card/FeaturedCard.js ***!
+  \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";

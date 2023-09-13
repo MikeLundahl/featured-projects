@@ -1,7 +1,7 @@
 import app from 'flarum/forum/app';
 import Link from 'flarum/common/components/Link';
 import Component from 'flarum/common/Component';
-import FeaturedCard from '../featued-card/FeaturedCard';
+import FeaturedCard from '../featured-card/FeaturedCard';
 import getPostImage from '../../helpers/getPostImage';
 import sortVotes from '../../../utils/sortVotes';
 
