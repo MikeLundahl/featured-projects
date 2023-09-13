@@ -389,10 +389,10 @@ function getPostImage(post, key) {
   }
   var regex = /<img(?!.*?class="emoji").*?src=[\'"](.*?)[\'"].*?>/;
   var image = app.forum.attribute('mbl-featured-projects.image');
-  var defaultImg = app.forum.attribute("baseUrl") + "/assets/" + image;
+  var defaultImg = app.forum.attribute('baseUrl') + '/assets/' + image;
   if (post) {
     var src = regex.exec(post.contentHtml());
-    if (typeof key === "number" && key > 0) {
+    if (typeof key === 'number' && key > 0) {
       return src ? src[key] : image ? defaultImg : null;
     } else if (key === '~') {
       return src;
@@ -448,8 +448,8 @@ flarum_forum_app__WEBPACK_IMPORTED_MODULE_2___default().initializers.add('mbl/fe
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
-            canVote = flarum_forum_app__WEBPACK_IMPORTED_MODULE_2___default().forum.attribute("canVoteFeaturedProjects");
-            tagsToFeature = flarum_forum_app__WEBPACK_IMPORTED_MODULE_2___default().forum.attribute('mbl-featured-projects.tags');
+            canVote = flarum_forum_app__WEBPACK_IMPORTED_MODULE_2___default().forum.attribute('canVoteFeaturedProjects');
+            tagsToFeature = flarum_forum_app__WEBPACK_IMPORTED_MODULE_2___default().forum.attribute('mbl-featured-projects.tags'); // @ts-ignore
             tagsOfCurrentDiscussion = flarum_forum_app__WEBPACK_IMPORTED_MODULE_2___default().current.data.discussion.tags();
             tagNamesOfCurrentDiscussion = tagsOfCurrentDiscussion.map(function (tag) {
               return tag.data.attributes.name;
@@ -522,9 +522,9 @@ var FeaturedProjectsVote = /*#__PURE__*/function (_Model) {
   /*
   discussionId = Model.attribute('discussionId');
   userId = Model.attribute('userId');
-  user = Model.hasOne('user');
+   user = Model.hasOne('user');
   discussion = Model.hasOne('discussion');
-   */;
+     */;
   return FeaturedProjectsVote;
 }((flarum_common_Model__WEBPACK_IMPORTED_MODULE_1___default()));
 

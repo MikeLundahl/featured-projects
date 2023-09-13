@@ -3,8 +3,8 @@ import Component from 'flarum/common/Component';
 export default class FeaturedCard extends Component {
   oninit(vnode) {
     super.oninit(vnode);
-    this.title = vnode.attrs.title
-    this.image = vnode.attrs.image
+    this.title = vnode.attrs.title;
+    this.image = vnode.attrs.image;
   }
 
   oncreate(vnode) {
@@ -17,11 +17,9 @@ export default class FeaturedCard extends Component {
 
   view() {
     return (
-        <div className="FeaturedCard" style={{backgroundImage: `url(${this.image})`}}>
-          <div className="FeatureCardTitle">
-            {this.title}
-          </div>
-        </div>
+      <div className="FeaturedCard" style={{ backgroundImage: `url(${this.image})` }}>
+        <div className="FeatureCardTitle">{this.title}</div>
+      </div>
     );
   }
 }

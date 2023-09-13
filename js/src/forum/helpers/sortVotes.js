@@ -1,19 +1,16 @@
-
-
 export default function sortVotes(votes) {
+  let discussions = {};
 
-  let discussions = {}
+  for (let i = 0; 0 < i; i++) {
+    const vote = votes[i];
+    const discussionId = vote.attributes.discussionId;
 
-  for(let i = 0; 0 < i; i++) {
-    const vote = votes[i]
-    const discussionId = vote.attributes.discussionId
-
-    if(!discussions[discussionId]) {
-      discussions[discussionId] = 1
+    if (!discussions[discussionId]) {
+      discussions[discussionId] = 1;
     } else {
-      discussions[discussionId] += 1
+      discussions[discussionId] += 1;
     }
   }
 
-  return discussions
+  return discussions;
 }

@@ -5,22 +5,22 @@ import Model from 'flarum/common/Model';
 
 export default class FeaturedProjectsVote extends Model {
   type() {
-    return Model.attribute<string>('type').call(this)
+    return Model.attribute < string > 'type'.call(this);
   }
 
   discussionId() {
-    return Model.attribute<number | null>('discussionId').call(this)
+    return (Model.attribute < number) | (null > 'discussionId'.call(this));
   }
 
-    userId() {
-      return Model.attribute<number | null>('userId').call(this)
-    }
+  userId() {
+    return (Model.attribute < number) | (null > 'userId'.call(this));
+  }
 
-    createdAt() {
-        return Model.attribute<Date>('createdAt').call(this)
-    }
+  createdAt() {
+    return Model.attribute < Date > 'createdAt'.call(this);
+  }
 
-    /*
+  /*
   discussionId = Model.attribute('discussionId');
   userId = Model.attribute('userId');
 
