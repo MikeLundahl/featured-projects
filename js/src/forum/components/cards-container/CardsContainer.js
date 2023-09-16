@@ -10,6 +10,7 @@ export default class CardsContainer extends Component {
     super.oninit(vnode);
     this.cardPrev = [];
     this.loading = true;
+    this.clickTag = app.forum.attribute('mbl-featured-projects.plausibleTag');
   }
 
   async oncreate(vnode) {
@@ -35,8 +36,9 @@ export default class CardsContainer extends Component {
         .then((results) => {
           for (let i = 0; i < results.length; i++) {
             const image = getPostImage(results[i].firstPost());
+            const classes = `FeaturedCardLink ${this.clickTag}`
             this.cardPrev.push(
-              <Link className="FeaturedCardLink" href={app.route.discussion(results[i])}>
+              <Link className={classes} href={app.route.discussion(results[i])}>
                 <FeaturedCard title={results[i].title()} image={image} />
               </Link>
             );

@@ -23,5 +23,10 @@ app.initializers.add('mbl/featured-projects', () => {
       setting: 'mbl-featured-projects.default_image',
       label: 'Default image as fallback',
       type: 'text',
+    })
+  .registerSetting({
+      setting: 'mbl-featured-projects.plausible_tracking_tag',
+      label: 'Tracking Tag (Plausible.io)',
+      type: 'text',
     });
 });
