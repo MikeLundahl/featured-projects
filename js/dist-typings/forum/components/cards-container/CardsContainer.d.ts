@@ -3,6 +3,7 @@ export default class CardsContainer extends Component<any, undefined> {
     oninit(vnode: any): void;
     cardPrev: any[] | undefined;
     loading: boolean | undefined;
+    clickTag: unknown;
     oncreate(vnode: any): Promise<void>;
     onupdate(vnode: any): void;
     view(): JSX.Element;
