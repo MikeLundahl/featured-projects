@@ -15,6 +15,31 @@ app.initializers.add('mbl/featured-projects', () => {
       95 // Optional: Priority
     )
     .registerSetting({
+      setting: 'mbl-featured-projects.sponsor_is_active',
+      label: 'Sponsor active',
+      type: 'boolean',
+    })
+    .registerSetting({
+      setting: 'mbl-featured-projects.sponsor_title',
+      label: 'Sponsor title',
+      type: 'text',
+    })
+    .registerSetting({
+      setting: 'mbl-featured-projects.sponsor_image_url',
+      label: 'Sponsor image URL',
+      type: 'text',
+    })
+    .registerSetting({
+      setting: 'mbl-featured-projects.sponsor_url',
+      label: 'Sponsor URL',
+      type: 'text',
+    })
+    .registerSetting({
+      setting: 'mbl-featured-projects.plausible_sponsor_tracking_tag',
+      label: 'Sponsor Tracking Tag (Plausible.io)',
+      type: 'text',
+    })
+    .registerSetting({
       setting: 'mbl-featured-projects.tags_allowed_for_voting',
       label: 'Tags allowed for voting (separate by comma)',
       type: 'text',

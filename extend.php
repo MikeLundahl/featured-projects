@@ -47,6 +47,12 @@ return [
     (new Extend\Settings())
         ->serializeToForum('mbl-featured-projects.tags', 'mbl-featured-projects.tags_allowed_for_voting', function($value) {
             return explode(',', $value);})
+        ->serializeToForum('mbl-featured-projects.sponsor_is_active', 'mbl-featured-projects.sponsor_is_active')
+        ->serializeToForum('mbl-featured-projects.sponsor_title', 'mbl-featured-projects.sponsor_title')
+        ->serializeToForum('mbl-featured-projects.sponsor_image_url', 'mbl-featured-projects.sponsor_image_url')
+        ->serializeToForum('mbl-featured-projects.sponsor_url', 'mbl-featured-projects.sponsor_url')
+        ->serializeToForum('mbl-featured-projects.sponsor_tracking_tag', 'mbl-featured-projects.plausible_sponsor_tracking_tag')
+        ->serializeToForum('mbl-featured-projects.default_image', 'mbl-featured-projects.default_image')
         ->serializeToForum('mbl-featured-projects.image', 'mbl-featured-projects.default_image')
         ->serializeToForum('mbl-featured-projects.plausibleTag', 'mbl-featured-projects.plausible_tracking_tag')
 
