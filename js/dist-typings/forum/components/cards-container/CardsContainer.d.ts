@@ -11,6 +11,8 @@ export default class CardsContainer extends Component<any, undefined> {
     sponsorUrl: unknown;
     sponsorTitle: unknown;
     sponsorIsActive: unknown;
+    sponsorNewTab: unknown;
+    sponsorTarget: string | undefined;
     classesSponsor: string | undefined;
     oncreate(vnode: any): Promise<void>;
     onupdate(vnode: any): void;
