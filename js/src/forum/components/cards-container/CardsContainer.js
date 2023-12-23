@@ -78,9 +78,9 @@ export default class CardsContainer extends Component {
           {this.cardPrev.length > 0 && <h3 className="FeaturedTitle">Featured projects</h3>}
           <div className="CardsContainer">
             {this.sponsorIsActive > 0 && (
-              <Link className={this.classesSponsor} href={this.sponsorUrl}>
+              <a class={this.classesSponsor} href={this.sponsorUrl}>
                 <FeaturedCard title={this.sponsorTitle} image={this.sponsorImg} />
-              </Link>
+              </a>
             )}
             {
               this.cardPrev.length > 0 ? this.cardPrev.map((card) => {
