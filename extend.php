@@ -48,6 +48,7 @@ return [
         ->serializeToForum('mbl-featured-projects.tags', 'mbl-featured-projects.tags_allowed_for_voting', function($value) {
             return explode(',', $value);})
         ->serializeToForum('mbl-featured-projects.sponsor_is_active', 'mbl-featured-projects.sponsor_is_active')
+        ->serializeToForum('mbl-featured-projects.sponsor_new_tab', 'mbl-featured-projects.sponsor_new_tab')
         ->serializeToForum('mbl-featured-projects.sponsor_title', 'mbl-featured-projects.sponsor_title')
         ->serializeToForum('mbl-featured-projects.sponsor_image_url', 'mbl-featured-projects.sponsor_image_url')
         ->serializeToForum('mbl-featured-projects.sponsor_url', 'mbl-featured-projects.sponsor_url')

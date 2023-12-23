@@ -20,6 +20,11 @@ app.initializers.add('mbl/featured-projects', () => {
       type: 'boolean',
     })
     .registerSetting({
+      setting: 'mbl-featured-projects.sponsor_new_tab',
+      label: 'Open sponsor in new tab',
+      type: 'boolean',
+    })
+    .registerSetting({
       setting: 'mbl-featured-projects.sponsor_title',
       label: 'Sponsor title',
       type: 'text',

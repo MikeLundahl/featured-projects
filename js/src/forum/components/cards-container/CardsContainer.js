@@ -18,6 +18,8 @@ export default class CardsContainer extends Component {
     this.sponsorUrl = app.forum.attribute('mbl-featured-projects.sponsor_url');
     this.sponsorTitle = app.forum.attribute('mbl-featured-projects.sponsor_title');
     this.sponsorIsActive = app.forum.attribute('mbl-featured-projects.sponsor_is_active');
+    this.sponsorNewTab = app.forum.attribute('mbl-featured-projects.sponsor_new_tab')
+    this.sponsorTarget = '_self'
 
     this.classesSponsor = `FeaturedCardLink ${this.clickTagSponsor}`
 
@@ -30,6 +32,10 @@ export default class CardsContainer extends Component {
 
   async oncreate(vnode) {
     super.oncreate(vnode);
+
+    if ( parseInt(this.sponsorNewTab) ) {
+      this.sponsorTarget = "_blank"
+    }
 
     const amountOfFeaturedItems = 3;
     const res = await app.store.find('featured-projects-vote');
@@ -78,7 +84,7 @@ export default class CardsContainer extends Component {
           {this.cardPrev.length > 0 && <h3 className="FeaturedTitle">Featured projects</h3>}
           <div className="CardsContainer">
             {this.sponsorIsActive > 0 && (
-              <a class={this.classesSponsor} href={this.sponsorUrl}>
+              <a className={this.classesSponsor} href={this.sponsorUrl} target={this.sponsorTarget}>
                 <FeaturedCard title={this.sponsorTitle} image={this.sponsorImg} />
               </a>
             )}
